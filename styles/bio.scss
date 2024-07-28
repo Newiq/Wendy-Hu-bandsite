@@ -3,104 +3,11 @@
 @use './partials/_typography' as *;
 @use './partials/_mixins' as *;
 @use './partials/components' as *;
-// nav styles
-.nav{
-    margin: 0;
-    background-color: $bandSite-Black;
-    display: flex;
-    @include mobile{
-        flex-direction: column;
-        align-items: center;
-    }
-    @include tablet-and-desktop{
-        justify-content: flex-start;
-    }
-    &__title{
-        @include mobile{
-            width: 7.5rem;
-            height: 1.25rem;
-            margin-top: 0.4rem;
-            padding-bottom: 1rem;
-            display: inline-block;
-        }
-        @include tablet{
-            width: 7.5rem;
-            height: 1.25rem;
-            margin-top: 1rem;
-            margin-bottom: 0;
-            margin-left: 0.8rem;
-            margin-right: 2rem;
-            padding-left: 0.4rem;
-            padding-right: 1.8rem;
-        }
-        @include desktop{
-            width: 7.5rem;
-            height: 1.25rem;
-            margin-top: 1rem;
-            margin-bottom: 0;
-            margin-left: 2.8rem;
-            margin-right: 2rem;
-            padding-left: 0.4rem;
-            padding-right: 1.8rem;
-            padding-bottom: 3rem;
-        }
-    }
-    &__container{
-        margin: 0;
-        width: 100%;
-        display: flex;
-        @include mobile{
-            
-            align-items: center;
-            justify-content: space-around;
-        }
-        
-        
-    }
-    &__item{
-        text-align: center;
-        @include no_style;
-        @include mobile{
-            width: 50%;
-            margin: 0;
-            padding-bottom: 1.5rem;
-        }
-        @include tablet{
-            width: 12%;
-            height: 1rem;
-            margin-left: 1rem;
-            margin-bottom: 0;
-            padding-bottom: 2rem;
-        }
-        @include desktop{
-            width: 6%;
-            height: 3rem;
-            margin-left: 4rem;
-            margin-right: 0;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-    }
-    &__item--active{
-        &:hover{
-            color: $bandSite-Mecury;
-            font-weight: 400;
-            border-bottom: solid .25rem $bandSite-white;
-            transition: border-color 0.6s ease-in-out;
-        }
-
-    }
-}
-
-
-
 
 // hero styles
-
-
 .hero{
     position: relative;
-    background-color: $bandSite-Black;  
+    background-color: $bandSite-Primary-1;  
     z-index: 1;
     margin: 0;
     @include mobile{
@@ -109,33 +16,37 @@
         object-fit: cover;
     }
     @include tablet{
-        height: 45vh;
+        height: 35rem;
     }
     @include desktop{
         height: 75vh;
     }
     &__title{
-        @include tablet-and-desktop{
+        margin: 0;
+        @include tablet{
             padding: 3rem;
             width: 100%;
-            display: flex;
-            align-items: center;
-            height: 39vh;
+            @include align_center;
+            height: 40vh;
+            margin-top: 0;
             margin-left: 0;
         }@include desktop{
             padding: 3rem;
             width: 100%;
-            display: flex;
-            align-items: center;
+            @include align_center;
             height: 48vh;
             margin-left: 4rem;
         }
-        @include hero_title-mobile;
+        @include mobile{
+            padding: 1rem;
+            margin-top: 0;
+            @include align_center;
+            height: 14rem;
+            text-align: left;
+            margin-left: 0;
+        }
     }
-    
-}
-
-.hero ::before{
+    & ::before{
     content: '';
     position: absolute;
     top: 0;
@@ -147,15 +58,15 @@
     background-position: center;
     opacity: 0.5;
     z-index: -1;
-
+    }
 }
+
+
 //about style
 .about{
         margin: 0;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include column_center;
     &__title{
         @include mobile{
             width: 85vw;
@@ -184,12 +95,12 @@
         }
         @include tablet{
             width: 75vw;
-            height: 45vh;
+            height: 35vh;
             object-fit: cover;
         }
         @include desktop{
             width: 72vw;
-            height: 48vh;
+            height: 72vh;
             object-fit: cover;
         }
     }
@@ -198,19 +109,24 @@
         @include mobile{
             width: 85vw;
             margin: 0 1rem 1rem 1rem;
-            text-align:justify;
+            @include justify_txt;
         }
         @include tablet{
             width: 75vw;
             margin: 0 1rem 1rem 1rem;
-            text-align:justify;
+            @include justify_txt;
         }
         @include desktop{
-            width: 72vw;
+            position: relative;
+            left: -5rem;
+            width: 60vw;
             margin: 3rem 0 0 0;
-            text-align:justify;
+            @include justify_txt;
         }
         &-vocal{
+            @include mobile{
+                margin: 0;
+            }
             @include desktop{
                 margin-top: 1rem;
                 margin-bottom: 2rem;
@@ -219,23 +135,30 @@
         
         
     }
+    &__container{
+        @include column_center;
+    }
     &__subtitle{
         width:85vw;
         text-align: left;
+        @include mobile{
+            margin-bottom: 0;
+        }
         @include tablet{
             margin-bottom: 0;
-            margin-left: 6.2rem;
+            margin-left: 20.2rem;
         }
-
         @include desktop{
+            margin-left: 13.25rem;
             margin-top: 2rem;
             margin-bottom: 2rem;
-            margin-left: 11rem;
+
         }
     }
     &__text{
         width:85vw;
         text-align: left;
+        
         @include tablet{
             display: flex;
             &-intro{
@@ -245,8 +168,7 @@
         @include desktop{
             width:80vw;
             margin: 0;
-            display: flex;
-            justify-content: space-between;
+            @include flex_between;
             margin-bottom: 2rem;
             gap: 2rem;
             &-intro{
@@ -255,11 +177,8 @@
                 display: inline-block;
             }
         }
-
     }
 
-    
-    
 }
 
 //gallery styles
@@ -271,19 +190,23 @@
             margin-left: 0.5rem;
             width: 100vw;
         }
+        &__item{
+            margin: 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            filter: brightness(50%); 
+            transition: opacity 0.3s ease; 
+            &:hover{
+                filter: brightness(100%); 
+            } 
+        }
         &__container{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin: 0;
-        }
-        &__item{
-            
-            margin: 0;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
+            }
         
     }
 
@@ -298,36 +221,36 @@
             margin-bottom: 2rem;
             width: 100vw;
         }
-        &__container{
-            display: grid;
-            width: 80vw;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-left: 5vw;
-        }
         &__item{
             margin: 0;
             width: 100%;
             height: auto;
             object-fit: cover;
+            position: relative;
+            display: block;
+            filter: brightness(50%); 
+            transition: filter 0.3s ease;
+            &:hover{
+                filter: brightness(100%); 
+            } 
         }
-        
-    }
+        &__container{
+            @include gallery_desktop;
+                }
+            }
+        }
 
-}
+
 
 @include mobile{
     .gallery{
         margin: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include column_center;
         gap: 2rem;
         padding: 1rem;
         &__title{
-            margin-bottom: 0;
-            margin-left: 4rem;
+            position: relative;
+            left: 2rem;
             display: block;
             width: 100%;
         }
@@ -337,201 +260,17 @@
             height: auto;
             object-fit: cover;
             margin: 0.8rem;
+            filter: brightness(50%); 
+            transition: opacity 0.3s ease; 
+            &:hover{
+                filter: brightness(100%); 
+            } 
+            
         }
-
     }
 }
 
 
-//footer style
 
-@include mobile{
-    .footer{
-        margin: 0;
-        background-color: $bandSite-Black;
-        display: flex;
-        flex-direction: column;
-        &__title{
-            padding-top: 2rem;
-            padding-left: 1rem;
-        }
-        &__media{
-            &-link{
-                margin: 0;
-                padding: 0;
-            }
-            
-            &-icon{
-                width: 2rem;
-                height: 1.8rem;
-            }
-        }
-        &__connect-title{
-            font-weight: 400;
-            margin: 2rem 1rem;
-        }
-        &__connect-txt{
-            margin: 0 1rem;
-            
-        }
-        &__connect-email{
-            margin: 2rem 1rem;
-        }
-        &__copyright-subtitle{
-            position: relative;
-            height: 1.5rem;
-            bottom: -43rem;
-            right: -1.2rem;
-        }
-        &__copyright-txt{
-            position: relative;
-            bottom: -2rem;
-            right: -1.2rem;
-            width: 100%;
-            margin-top: 0;
-            padding-bottom: 2rem;
-            order: 2;
-        }
-    }
-
-}
-
-@include tablet{
-    .footer{
-        margin: 0;
-        background-color: $bandSite-Black;
-        &__title{
-            padding-top: 1rem;
-            padding-left: 1rem;
-            margin: 0;
-        }
-        &__media{
-            margin: 0;
-            &-link{
-                margin: 0;
-                padding: 0;
-            }
-            
-            &-icon{
-                width: 2rem;
-                height: 1.8rem;
-                margin-bottom: 0;
-                margin-left: 0;
-                margin-right: 1rem;
-            }
-        }
-        
-        &__container{
-            width: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-        
-        &__connect-title{
-            
-            display: block;
-            font-weight: 400;
-            margin: 2rem 1rem;
-        }
-        &__connect-txt{
-            display: block;
-            margin: 0 1rem;
-            
-        }
-        &__connect-email{
-            margin: 2rem 1rem 0 1rem;
-        }
-        &__copyright-subtitle{
-            margin: 2rem 1rem 0 1rem;
-        }
-        &__copyright-txt{
-            position: relative;
-            top:0;
-            left: 1rem;
-            margin: 0;
-            padding-bottom: 4rem;
-        }
-    }
-}
-
-@include desktop{
-    .footer{
-        margin: 0;
-        background-color: $bandSite-Black;
-        &__title{
-            padding-top: 1rem;
-            padding-left: 1rem;
-            margin: 0;
-        }
-        &__media{
-            margin: 0;
-            &-link{
-                margin: 0;
-                padding: 0;
-            }
-            
-            &-icon{
-                position: relative;
-                right: 5rem;
-                bottom: -0.5rem;
-                width: 2rem;
-                height: 1.8rem;
-                margin-bottom: 0;
-                margin-left: 0;
-                margin-right: 1.5rem;
-            }
-        }
-        
-        &__container{
-            width: 60%;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-            gap: 1rem;
-            &--modifier1{
-                position: relative;
-                left: 6rem;
-                width: 100%;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 3rem;
-                gap:9rem;
-            }
-            &--modifier2{
-                margin-left: 5rem;
-            }
-        }
-        
-        &__connect-title{
-            
-            display: block;
-            font-weight: 400;
-            margin: 2rem 1rem;
-        }
-        &__connect-txt{
-            display: block;
-            margin: 0 1rem;
-            
-        }
-        &__connect-email{
-            margin: 2rem 1rem 0 1rem;
-        }
-        &__copyright-subtitle{
-            position: relative;
-            height: 1.5rem;
-            top: 0.2rem;
-            right: 2rem;
-        }
-        &__copyright-txt{
-            position: relative;
-            top:2rem;
-            left: 8vw;
-            margin: 0;
-            padding-bottom: 4rem;
-        }
-    }
-}
 
 

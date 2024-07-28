@@ -33,8 +33,30 @@
     align-items: center;
     justify-items: center;
 }
-
+@mixin flex_between{
+    display: flex;
+    justify-content: space-between;
+}
+@mixin flex_spacearound{
+    display: flex;
+    justify-content: space-around;
+}
+@mixin align_center{
+    display: flex;
+    align-items: center;
+}
+@mixin column_center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 @mixin no_style{
     text-decoration: none;
 }
+
+@mixin justify_txt{
+    text-align: justify;
+}
+
 

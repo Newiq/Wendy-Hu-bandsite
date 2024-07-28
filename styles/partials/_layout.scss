@@ -1,27 +1,52 @@
 @use './mixins' as *;
 @use './_variables' as *;
-body{
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-header, main, footer {
-    max-width: 100vw; 
-    overflow-x: hidden;
-}
-@include mobile{
-    *{
-        margin: 1rem;
 
+@include mobile{
+    .nav *,.about *,.gallery *,.footer *{
+        margin: 1rem;
     }
-    .nav{
-        margin: 0;
+    .about{
+        &__subtitle{
+            margin-bottom: 0;
+            margin-left: 3rem;
+        }
+        &__note-vocal{
+            margin-top: 0;
+        }
     }
+    .gallery{
+        &__title{
+            margin-bottom: 0;
+        }
+        &__container{
+            margin-top: 0;
+        }
+        &__item{
+            margin-top: 0;
+        }
+    }
+
 }
 
 @include tablet{
-    *{
+    .nav *,.about *,.footer *,.gallery{
         margin: 2.25rem;
+    }
+    .about{
+        &__subtitle{
+            margin-bottom: 0;
+            margin-left: 6rem;
+        }
+        &__note{
+            margin-bottom: 1rem;
+        }
+        &__note-vocal{
+            margin-top: 0;
+        }
+        &__text{
+            margin-top: 0;
+        }
+
     }
 }
 
@@ -29,4 +54,19 @@ header, main, footer {
     *{
         margin: auto;
     }
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+}
+header, main, footer {
+    max-width: 100vw; 
+    overflow-x: hidden;
+}
+
+h1{
+    margin: 0;
 }

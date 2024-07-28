@@ -1,26 +1,13 @@
 @use './_variables' as *;
 @use './_mixins' as *;
+//gallery components
+@mixin gallery_desktop{
+    display: grid;
+    width: 80vw;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-left: 5vw;
+}
+//button
 
-//hero title
-@mixin hero_tite-tablet{
-    
-    
-}
-@mixin hero_title-desktop{
-    padding: 2.25rem;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    margin: 2rem 1.5rem;
-    padding: 4rem;
-}
-
-@mixin hero_title-mobile{
-    padding: 1rem;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    height: 14rem;
-    text-align: left;
-    margin-left: 0;
-}
+//list
