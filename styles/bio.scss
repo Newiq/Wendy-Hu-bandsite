@@ -19,7 +19,7 @@
         height: 35rem;
     }
     @include desktop{
-        height: 75vh;
+        height: 35rem;
     }
     &__title{
         margin: 0;
@@ -27,14 +27,14 @@
             padding: 3rem;
             width: 100%;
             @include align_center;
-            height: 40vh;
+            height: 28rem;
             margin-top: 0;
             margin-left: 0;
         }@include desktop{
             padding: 3rem;
             width: 100%;
             @include align_center;
-            height: 48vh;
+            height: 28rem;
             margin-left: 4rem;
         }
         @include mobile{
@@ -89,18 +89,18 @@
     &__img{
         
         @include mobile{
-            width: 85vw;
+            width: 85%;
             height: 14rem;
             object-fit: cover;
         }
         @include tablet{
-            width: 75vw;
-            height: 35vh;
+            width: 75%;
+            height: 20rem;
             object-fit: cover;
         }
         @include desktop{
-            width: 72vw;
-            height: 72vh;
+            width: 71%;
+            height: 35rem;
             object-fit: cover;
         }
     }
@@ -185,7 +185,9 @@
 @include tablet{
     
     .gallery {
-        
+        background-color: $bandSite-Secondary-3;
+        @include clean_margin;
+        padding: 2rem;
         &__title{
             margin-left: 0.5rem;
             width: 100vw;
@@ -195,17 +197,9 @@
             width: 100%;
             height: auto;
             object-fit: cover;
-            filter: brightness(50%); 
-            transition: opacity 0.3s ease; 
-            &:hover{
-                filter: brightness(100%); 
-            } 
         }
         &__container{
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 0;
+            @include gallery_tablet;
             }
         
     }
@@ -214,7 +208,9 @@
 
 @include desktop{
     .gallery {
-        margin: 3rem;
+        background-color: $bandSite-Secondary-3;
+        @include clean_margin;
+        padding: 4rem;
         display: inline-block;
         &__title{
             margin-left: 5rem;
@@ -228,6 +224,7 @@
             object-fit: cover;
             position: relative;
             display: block;
+            // I only add the hover filter on desktop because I cannot hover on mobile & tablet
             filter: brightness(50%); 
             transition: filter 0.3s ease;
             &:hover{
@@ -244,7 +241,8 @@
 
 @include mobile{
     .gallery{
-        margin: 0;
+        background-color: $bandSite-Secondary-3;
+        @include clean_margin;
         @include column_center;
         gap: 2rem;
         padding: 1rem;
@@ -260,11 +258,6 @@
             height: auto;
             object-fit: cover;
             margin: 0.8rem;
-            filter: brightness(50%); 
-            transition: opacity 0.3s ease; 
-            &:hover{
-                filter: brightness(100%); 
-            } 
             
         }
     }

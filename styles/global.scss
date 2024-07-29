@@ -179,7 +179,7 @@
         }
         
         &__container{
-            width: 100%;
+            
             margin: 0;
             @include flex_spacearound;
             align-items: center;
@@ -193,13 +193,14 @@
             }
         }
         &__connect{
+            flex-shrink: 1;
             flex-grow: 1;
             &-title{
-                display: block;
+                display: inline-block;
                 margin: 2rem 1rem;
             }
             &-txt{
-                display: block;
+                display: inline-block;
                 margin: 0 1rem;
             }
             &-email{
@@ -281,6 +282,7 @@
         }
         &__connect{
             flex-grow: 1;
+            flex-shrink: 1;
             &-title{
                 display: block;
                 font-weight: 400;

@@ -29,7 +29,7 @@
 }
 
 @include tablet{
-    .nav *,.about *,.footer *,.gallery{
+    .nav *,.about *,.footer *{
         margin: 2.25rem;
     }
     .about{

@@ -59,4 +59,7 @@
     text-align: justify;
 }
 
-
+@mixin clean_margin{
+    margin: 0;
+    max-width: 100%;
+}
