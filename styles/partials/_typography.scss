@@ -99,7 +99,7 @@ $font-primary: 'AvenirNext LT Pro';
 }
 
 
-.about__title, .gallery__title {
+.about__title, .gallery__title, .conversation__title{
     color: $bandSite-Primary-1;
     @include font-face(2.25rem, 2.75rem, 400); 
     
@@ -168,7 +168,7 @@ footer p,footer a{
         
     }
     
-    .about__title, .gallery__title {
+    .about__title, .gallery__title, .conversation__title{
         color: $bandSite-Primary-1;
         @include font-face(2rem, 2.75rem, 400); 
         

@@ -1,8 +1,8 @@
 @use './mixins' as *;
 @use './_variables' as *;
-
+//index layout
 @include mobile{
-    .nav *,.about *,.gallery *,.footer *{
+    .nav *,.about *,.gallery *,.footer *,.conversation *{
         margin: 1rem;
     }
     .about{
@@ -25,11 +25,16 @@
             margin-top: 0;
         }
     }
+    .conversation{
+        &__title{
+            margin-bottom: 0;
+        }
+    }
 
 }
 
 @include tablet{
-    .nav *,.about *,.footer *{
+    .nav *,.about *,.footer *,.conversation *{
         margin: 2.25rem;
     }
     .about{
@@ -46,7 +51,6 @@
         &__text{
             margin-top: 0;
         }
-
     }
 }
 
@@ -55,6 +59,7 @@
         margin: auto;
     }
 }
+//shows layout
 
 body{
     margin: 0;
