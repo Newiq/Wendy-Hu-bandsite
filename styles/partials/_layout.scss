@@ -2,7 +2,7 @@
 @use './_variables' as *;
 //index layout
 @include mobile{
-    .nav *,.about *,.gallery *,.footer *,.conversation *{
+    .nav *,.about *,.gallery *,.footer *,.conversation *,.comment *{
         margin: 1rem;
     }
     .about{

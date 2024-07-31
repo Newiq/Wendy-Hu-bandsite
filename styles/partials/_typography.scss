@@ -201,7 +201,20 @@ footer p,footer a{
         @include font-face(1rem, 1.375rem, 300); 
         
     }
-    
+    span{
+        color: $bandSite-Primary-1;
+        @include font-face(1rem, 1.375rem, 400); 
+    }
+    label{
+        color: $bandSite-Primary-2;
+        @include font-face(.875rem, 1.375rem, 300); 
+    }
+    .comment{
+        &__time{
+            color: $bandSite-Primary-2;
+        }
+    }
+
     footer p{
         color: $bandSite-Primary-3;
         @include font-face(0.9rem, 1.375rem, 300); 
@@ -226,4 +239,8 @@ footer p,footer a{
 }
 
 // Labels & Buttons
+#button{
+    color: $bandSite-Primary-3;
+    @include font-face(1rem, 1.25rem, 400); 
+}
 
