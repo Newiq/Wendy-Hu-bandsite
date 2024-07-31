@@ -29,6 +29,19 @@
         &__title{
             margin-bottom: 0;
         }
+        &__container-col1{
+            margin-bottom: 0;
+        }
+        &__container-col2{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+    #username, #comments{
+        margin-top: 0;
+    }
+    .label{
+        margin-bottom: 0;
     }
 
 }

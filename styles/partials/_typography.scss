@@ -207,7 +207,7 @@ footer p,footer a{
     }
     label{
         color: $bandSite-Primary-2;
-        @include font-face(.875rem, 1.375rem, 300); 
+        @include font-face(.675rem, 1.375rem, 400); 
     }
     .comment{
         &__time{
@@ -243,4 +243,5 @@ footer p,footer a{
     color: $bandSite-Primary-3;
     @include font-face(1rem, 1.25rem, 400); 
 }
+
 

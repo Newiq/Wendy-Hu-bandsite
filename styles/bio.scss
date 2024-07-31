@@ -276,14 +276,14 @@
         &__container{
             @include column_center;
             &-col1{
-                @include column_center;
-
+                @include flex-spacearound;
             }
             &-col2{
                 @include column_center;
             }
         }
         &__button{
+            width: 85%;
             display: flex;
             justify-content: flex-end;
         }
@@ -296,8 +296,26 @@
         }
     }
 }
+//comment style
+.comment{
+    &__avatar{
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: calc(50% + 0.3rem) center;
+    &.placeholder {
+        width: 2.25rem;
+        height: 2.25rem;
+        background-color: $bandSite-Secondary-2; 
+    }
+    }
+}
 
 #avatar{
+    position: relative;
+    right: 2rem;
+    top: 1rem;
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
@@ -305,24 +323,31 @@
     object-position: calc(50% + 0.3rem) center;
 }
 
-#avatar__none{
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-    background-color: $bandSite-Secondary-2;
-}
 
 #username{
+    position: relative;
+    right: 2rem;
+    height: 2.25rem;
+    width: 55vw;
     border-radius: .25rem;
+    border-color: $bandSite-Secondary-2;;
 }
 
 #comments{
+    height: 12.25rem;
+    width: 55vw;
     border-radius: .25rem;
+}
+.label{
+    width: 55vw;
+    text-align: left;
 }
 
 #button{
+    position: relative;
+    right: 7rem;
     height: 3rem;
-    width: 70%;
+    width: 32vw;
     border-radius: .25rem;
     color: $bandSite-Primary-3;
     background-color: $bandSite-Primary-1;
