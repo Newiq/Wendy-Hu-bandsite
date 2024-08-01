@@ -23,13 +23,14 @@
     }
     &__title{
         margin: 0;
+        padding: 1rem;
+        @include align_center;
+        height: 14rem;
+        text-align: left;
         @include tablet{
             padding: 3rem;
             width: 100%;
-            @include align_center;
             height: 28rem;
-            margin-top: 0;
-            margin-left: 0;
         }@include desktop{
             padding: 4rem;
             width: 100%;
@@ -37,14 +38,7 @@
             height: 28rem;
             margin-left: 4rem;
         }
-        @include mobile{
-            padding: 1rem;
-            margin-top: 0;
-            @include align_center;
-            height: 14rem;
-            text-align: left;
-            margin-left: 0;
-        }
+
     }
     & ::before{
     content: '';
@@ -309,37 +303,92 @@
     border-top: .12rem solid $bandSite-Secondary-2;
     border-bottom: .02rem solid $bandSite-Secondary-2;
     margin-bottom: 1rem;
+    @include tablet{
+        margin-top: 0;
+        width: 80%;
+    }
+    @include desktop{
+        margin:0 auto;
+        width: 50%;
+        padding-bottom: 5vh;
+    }
 }
 .comment{
     display: flex;
     flex-direction: column;
     border-bottom: .12rem solid $bandSite-Secondary-2;
     padding-bottom: 1em;
+    @include desktop{
+        padding-left: 4vw;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+    }
     &__info{
         display: flex;
         justify-content: space-around;
         align-items: center;
+        @include desktop{
+            width: 100%;
+        }
     }
     &__name{
         width: 47%;
         text-align: left;
+        @include tablet{
+            width: 60%;
+            position: relative;
+            right: 2.7rem;
+        }
+        @include desktop{
+            width: 60%;
+            position: relative;
+            right: 7.2rem;
+            
+            
+        }
     }
     &__text{
         width: 65vw;
+        @include desktop{
+            width: 45vw;
+            padding-bottom: 1rem;
+        }
+        
     }
     
     &__avatar{
         position: relative;
-        right: 2rem;
+        right: 1rem;
+        top: 0.4rem;
         width: 2.5rem;
         height: 2.5rem;
         border-radius: 50%;
         object-fit: cover;
         object-position: calc(50% + 0.3rem) center;
+        @include tablet{
+            width: 3rem;
+            height: 3rem;
+            right: 3rem;
+            top: 1rem;
+        }
+        @include desktop{
+            width: 3rem;
+            height: 3rem;
+            right: 5rem;
+            bottom: 2rem;
+        }
         &.placeholder {
             width: 2.5rem;
             height: 2.5rem;
             background-color: $bandSite-Secondary-2; 
+            @include tablet{
+                width: 3rem;
+                height: 3rem;
+            }
+            @include desktop{
+                width: 3rem;
+                height: 3rem;
+            }
         }
     }
 }
@@ -347,12 +396,24 @@
 #avatar{
     position: relative;
     top: 1rem;
-    right: 8vw;
+    right: 6vw;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
     object-fit: cover;
     object-position: calc(50% + 0.4rem) center;
+    @include tablet{
+        top: 1.5rem;
+        left: 4vw;
+        width: 3rem;
+        height: 3rem;
+    }
+    @include desktop{
+        margin-top: 0;
+        left: 9vw;
+        width: 3rem;
+        height: 3rem;
+    }
 }
 
 
@@ -365,6 +426,18 @@
     width: 57vw;
     border-radius: .25rem;
     background-color: $bandSite-Secondary-3;
+    @include tablet{
+        width: 70vw;
+        right: 3rem;
+
+    }
+    @include desktop{
+        width: 45vw;
+        right: 1.3rem;
+        margin-bottom: 2vh;
+
+    }
+
     
 }
 input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a new comment"]::placeholder{
@@ -382,6 +455,15 @@ input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a n
     border-color: $bandSite-Secondary-2;
     background-color: $bandSite-Secondary-3;
     color: $bandSite-Primary-1;
+    @include tablet{
+        width: 70vw;
+        position: relative;
+        left: 0.5rem;
+    }
+    @include desktop{
+        width: 45vw;
+        
+    }
 }
 
 input.error, textarea.error {
@@ -391,7 +473,6 @@ input.error, textarea.error {
 .label{
     width: 70vw;
     text-align: left;
-    
 }
 
 
@@ -404,6 +485,15 @@ input.error, textarea.error {
     background-color: $bandSite-Primary-1;
     &:hover{
         background-color: $bandSite-Secondary-1;  
+    }
+    @include tablet{
+        margin-right: 4.5vw;
+        width: 20vw;
+    }
+    @include desktop{
+        margin-right: 17vw;
+        margin-top: 2vw;
+        width: 15vw;
     }
 }
 

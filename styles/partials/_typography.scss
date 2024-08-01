@@ -154,9 +154,10 @@ $font-primary: 'AvenirNext LT Pro';
         @include font-face(0.9rem, 1.375rem, 300); 
     }
 
-    footer p{
+    footer p,footer a{
         color: $bandSite-Primary-3;
-        @include font-face(0.9rem, 1.375rem, 300); 
+        @include font-face(0.9rem, 1.375rem, 300);
+        text-decoration: none;
     }
 
     .footer{
