@@ -5,6 +5,13 @@
     .nav *,.about *,.gallery *,.footer *,.conversation *,.comment *{
         margin: 1rem;
     }
+    .hero{
+        
+        &__subtitle{
+            margin-left: 1rem;
+            margin-top: 5vh;
+        }
+    }
     .about{
         &__subtitle{
             margin-bottom: 0;
