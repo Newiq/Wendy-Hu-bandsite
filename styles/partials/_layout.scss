@@ -36,12 +36,41 @@
             margin-top: 0;
             margin-bottom: 0;
         }
+        
+    }
+    .comment{
+        &__info{
+            margin-bottom: 0;
+        }
+        &__avatar{
+            margin: 0;
+            margin-left: 5vw;
+        }
+        &__time{
+            margin-bottom: 0.8rem;
+            margin-right: 0;
+        }
+        &__name{
+            margin-left: 0;
+            margin-bottom: 0.8rem;
+        }
+        &__text{
+            text-align: left;
+            margin-top: 0.5em;
+            margin-left: 20vw;
+            margin-right: 10vw;
+        }
+
     }
     #username, #comments{
         margin-top: 0;
     }
     .label{
+        margin-left: -0.5rem;
         margin-bottom: 0;
+    }
+    .label2{
+        margin-left: 4rem;
     }
 
 }

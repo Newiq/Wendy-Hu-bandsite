@@ -27,14 +27,17 @@ function formatTimestamp(dateString) {
     return date.toLocaleDateString('en-US', options);
 }
 
-//function: display the comments
 function displayComment(comment){
     //create container&comments elements
     const container = document.getElementById("comment__container");
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
 
-    // add avatar element
+    //create info div
+    const infoDiv = document.createElement('div');
+    infoDiv.classList.add('comment__info');
+
+    // add avatar element to info div
     const avatarElement = document.createElement('div');
     avatarElement.classList.add('comment__avatar');
     //validation:avatar
@@ -44,19 +47,21 @@ function displayComment(comment){
     } else {
         avatarElement.classList.add('placeholder');
     }
-    commentDiv.appendChild(avatarElement);
+    infoDiv.appendChild(avatarElement);
 
-    //add names elements
+    //add name element to info div
     const nameElement = document.createElement('span');
     nameElement.classList.add('comment__name');
     nameElement.textContent = comment.name;
-    commentDiv.appendChild(nameElement);
-    
-    // add timestamp
+    infoDiv.appendChild(nameElement);
+
+    // add timestamp to info div
     const timeElement = document.createElement('p');
     timeElement.classList.add('comment__time');
     timeElement.textContent = formatTimestamp(comment.timestamp);
-    commentDiv.appendChild(timeElement);
+    infoDiv.appendChild(timeElement);
+
+    commentDiv.appendChild(infoDiv);
 
     //add comments
     const commentElement = document.createElement('p');
@@ -67,10 +72,10 @@ function displayComment(comment){
     //add div to the container
     container.appendChild(commentDiv);
 }
-
 defaultComments.forEach(comment => {
     displayComment(comment);
 });
+
 
 //HTML form
 document.getElementById('commentForm').addEventListener('submit', function(e){
@@ -78,6 +83,19 @@ document.getElementById('commentForm').addEventListener('submit', function(e){
     //get user info
     const username = document.getElementById("username").value;
     const comments = document.getElementById("comments").value;
+    //remove the error state
+    username.classList.remove('error');
+    comments.classList.remove('error');
+    //change the border color if there is an error
+    if (!username.checkValidity()) {
+        username.classList.add('error');
+    }
+
+    if (!comments.checkValidity()) {
+        comments.classList.add('error');
+    }
+
+    //get user info
     const avatar = document.getElementById("avatar").src;
     const newTimeStamp = () => {
         const now = new Date();
@@ -105,3 +123,4 @@ document.getElementById('commentForm').addEventListener('submit', function(e){
     document.getElementById('commentForm').reset();
 
 })
+
