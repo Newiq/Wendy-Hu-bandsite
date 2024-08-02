@@ -227,6 +227,10 @@ $font-primary: 'AvenirNext LT Pro';
         @include font-face(2.25rem, 2.75rem, 400); 
         
     }
+    .hero__subtitle{
+        color: $bandSite-Primary-3;
+        @include font-face(2rem, 2.75rem, 300); 
+    }
     .about__note{
         color: $bandSite-Primary-1;
         @include font-face(1.3rem, 1.8rem, 400); 

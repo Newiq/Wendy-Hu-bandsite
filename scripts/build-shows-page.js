@@ -111,13 +111,109 @@ function displayShowsCol(show, label) {
     showDiv.appendChild(button);
 }
 
-//create title
-const container = document.getElementById("show");
-const showTitle = document.createElement('h2');
-showTitle.classList.add('show__title');
-showTitle.textContent = 'Shows';
-container.appendChild(showTitle);
+//Function: create label div, only for larger screen
+function createLabelDiv(label){
+    // Create container
+    const container = document.getElementById("show");
+    const showDiv = document.createElement('div');
+    container.appendChild(showDiv);
+    showDiv.classList.add('show__container');
+    
+    // Create container for label
+    const tagContainer1 = document.createElement('div');
+    tagContainer1.classList.add('show__container-label');
+    showDiv.appendChild(tagContainer1);
 
-for (let i = 0; i < showInfo.length; i++) {
-    displayShowsCol(showInfo[i], labelInfo);
+    // Create 1st label span
+    const labelElement1 = document.createElement('span');
+    labelElement1.textContent = label[0];
+    labelElement1.classList.add('show__label');
+    tagContainer1.appendChild(labelElement1);
+
+    // Create 2nd label span
+    const labelElement2 = document.createElement('span');
+    labelElement2.textContent = label[1];
+    labelElement2.classList.add('show__label');
+    tagContainer1.appendChild(labelElement2);
+
+    // Create 3rd label span
+    const labelElement3 = document.createElement('span');
+    labelElement3.textContent = label[2];
+    labelElement3.classList.add('show__label');
+    tagContainer1.appendChild(labelElement3);
+
+    return showDiv;
+
 }
+
+// Function: display the show in large screen
+function displayShowsRow(show,showDiv){
+
+    // Create container for other info
+    const tagContainer2 = document.createElement('div');
+    tagContainer2.classList.add('show__container-info');
+    showDiv.appendChild(tagContainer2);
+
+    // Create date p
+    const dateElement = document.createElement('p');
+    dateElement.classList.add('show__date');
+    dateElement.textContent = formatWeekday(show.weekDay) + ' ' + show.date;
+    tagContainer2.appendChild(dateElement);
+
+    // Create venue p
+    const venueElement = document.createElement('p');
+    venueElement.classList.add('show__venue');
+    venueElement.textContent = show.venue;
+    tagContainer2.appendChild(venueElement);
+
+    // Create location p
+    const locationElement = document.createElement('p');
+    locationElement.classList.add('show__location');
+    locationElement.textContent = show.location;
+    tagContainer2.appendChild(locationElement);
+
+    // Create button
+    const button = document.createElement('button');
+    button.classList.add('show__button');
+    button.textContent = 'BUY TICKETS';
+    tagContainer2.appendChild(button);
+
+}
+
+//create title
+function createTitle(){
+    const container = document.getElementById("show");
+    const showTitle = document.createElement('h2');
+    showTitle.classList.add('show__title');
+    showTitle.textContent = 'Shows';
+    container.appendChild(showTitle);
+}
+
+
+//display for different sizes of screen
+
+document.addEventListener('DOMContentLoaded', function () {
+    function applyResponsiveStyles() {
+        const container = document.getElementById("show");
+        container.innerHTML = ""; // Clear the container
+
+        createTitle();
+
+        if (window.innerWidth < 767) {
+            for (let i = 0; i < showInfo.length; i++) {
+                displayShowsCol(showInfo[i], labelInfo);
+            }
+        } else {
+            const parentDiv = createLabelDiv(labelInfo); 
+            for (let i = 0; i < showInfo.length; i++) {
+                displayShowsRow(showInfo[i], parentDiv); 
+            }
+        }
+    }
+
+// Initial check
+applyResponsiveStyles();
+
+// Re-check on window resize
+window.addEventListener('resize', applyResponsiveStyles);
+});
