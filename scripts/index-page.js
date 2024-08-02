@@ -27,6 +27,8 @@ function formatTimestamp(dateString) {
     return date.toLocaleDateString('en-US', options);
 }
 
+//function:display the default comment
+
 function displayComment(comment){
     //create container&comments elements
     const container = document.getElementById("comment__container");
