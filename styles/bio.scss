@@ -466,7 +466,7 @@ input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a n
     }
 }
 
-input.error, textarea.error {
+.error {
     border-color: #ff0000; 
 }
 

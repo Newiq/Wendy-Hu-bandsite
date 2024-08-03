@@ -45,6 +45,13 @@ function formatWeekday(weekDayString) {
     return shortWeekDay;
 }
 
+// Function: format date to MMM DD YYYY
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'short', day: '2-digit' };
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+}
+
 // Function: display the show in mobile
 function displayShowsCol(show, label) {
     // Create container
@@ -67,7 +74,7 @@ function displayShowsCol(show, label) {
     // Create date p
     const dateElement = document.createElement('p');
     dateElement.classList.add('show__date');
-    dateElement.textContent = formatWeekday(show.weekDay) + ' ' + show.date;
+    dateElement.textContent = formatWeekday(show.weekDay) + ' ' + formatDate(show.date);
     tagContainer1.appendChild(dateElement);
 
     // Create 2nd tag container for flexbox
@@ -143,21 +150,19 @@ function createLabelDiv(label){
     tagContainer1.appendChild(labelElement3);
 
     return showDiv;
-
 }
 
 // Function: display the show in large screen
-function displayShowsRow(show,showDiv){
-
+function displayShowsRow(show, parentDiv){
     // Create container for other info
     const tagContainer2 = document.createElement('div');
     tagContainer2.classList.add('show__container-info');
-    showDiv.appendChild(tagContainer2);
+    parentDiv.appendChild(tagContainer2);
 
     // Create date p
     const dateElement = document.createElement('p');
     dateElement.classList.add('show__date');
-    dateElement.textContent = formatWeekday(show.weekDay) + ' ' + show.date;
+    dateElement.textContent = formatWeekday(show.weekDay) + ' ' + formatDate(show.date);
     tagContainer2.appendChild(dateElement);
 
     // Create venue p
@@ -177,7 +182,6 @@ function displayShowsRow(show,showDiv){
     button.classList.add('show__button');
     button.textContent = 'BUY TICKETS';
     tagContainer2.appendChild(button);
-
 }
 
 //create title
@@ -189,9 +193,7 @@ function createTitle(){
     container.appendChild(showTitle);
 }
 
-
 //display for different sizes of screen
-
 document.addEventListener('DOMContentLoaded', function () {
     function applyResponsiveStyles() {
         const container = document.getElementById("show");
@@ -211,9 +213,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-// Initial check
-applyResponsiveStyles();
+    // Initial check
+    applyResponsiveStyles();
 
-// Re-check on window resize
-window.addEventListener('resize', applyResponsiveStyles);
+    // Re-check on window resize
+    window.addEventListener('resize', applyResponsiveStyles);
 });
