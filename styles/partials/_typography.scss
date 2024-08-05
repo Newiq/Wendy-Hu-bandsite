@@ -206,6 +206,15 @@ $font-primary: 'AvenirNext LT Pro';
     @include font-face(1rem, 1.25rem, 400); 
 }
 
+input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a new comment"]::placeholder{
+    @include font-face(1rem, 1.375rem, 300);
+}
+
+
+input#username, textarea#comments {
+    @include font-face(1rem, 1.375rem, 300);
+}
+
 
 
 // Desktop & Tablet Text Styles

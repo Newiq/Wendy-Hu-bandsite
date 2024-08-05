@@ -84,26 +84,8 @@ document.getElementById('commentForm').addEventListener('submit', function (e) {
     // Get user info
     const usernameInput = document.getElementById("username");
     const commentsInput = document.getElementById("comments");
-    const username = usernameInput.value.trim(); // Use trim to remove any leading/trailing whitespace
-    const comments = commentsInput.value.trim(); // Use trim to remove any leading/trailing whitespace
-    
-    // Remove the error state
-    usernameInput.classList.remove('error');
-    commentsInput.classList.remove('error');
-    
-    // Change the border color if there is an error
-    let isValid = true;
-    if (!username) {
-        usernameInput.classList.add('error');
-        isValid = false;
-    }
-
-    if (!comments) {
-        commentsInput.classList.add('error');
-        isValid = false;
-    }
-
-    if (!isValid) return;
+    const username = usernameInput.value.trim(); 
+    const comments = commentsInput.value.trim();
 
     // Get user info
     const avatar = document.getElementById("avatar") ? document.getElementById("avatar").src : '';

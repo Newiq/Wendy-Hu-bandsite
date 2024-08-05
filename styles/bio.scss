@@ -435,11 +435,13 @@
         width: 45vw;
         right: 1.3rem;
         margin-bottom: 2vh;
-
     }
-
+    // &:invalid {
+    //     border-color: #ff0000;
+    //     }
     
 }
+
 input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a new comment"]::placeholder{
     color: $bandSite-Secondary-1;
 }
@@ -464,11 +466,13 @@ input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a n
         width: 45vw;
         
     }
+
 }
 
-.error {
-    border-color: #ff0000; 
-}
+// input:invalid,
+// textarea:invalid {
+//     border-color: #ff0000;
+// }
 
 .label{
     width: 70vw;
