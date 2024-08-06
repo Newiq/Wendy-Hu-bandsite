@@ -210,7 +210,6 @@ input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a n
     @include font-face(1rem, 1.375rem, 300);
 }
 
-
 input#username, textarea#comments {
     @include font-face(1rem, 1.375rem, 300);
 }

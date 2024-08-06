@@ -1,18 +1,18 @@
-@use './_variables' as vars;
+@use './_variables' as *;
 @mixin mobile {
-    @media (min-width:320px) and (max-width: 767px) {
+    @media (min-width:$mobileSizeMin) and (max-width: $mobileSizeMax) {
     @content;
     }
 }
 
 @mixin tablet {
-    @media (min-width: 768px) and (max-width: 1279px) {
+    @media (min-width: $tabletSizeMin) and (max-width: $tabletSizeMax) {
     @content;
     }
 }
 
 @mixin desktop {
-    @media (min-width: 1280px) {
+    @media (min-width: $desktopSizeMin) {
     @content;
     }
 }
