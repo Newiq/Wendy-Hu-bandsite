@@ -1,8 +1,8 @@
 //nav and footer styles for the global
-@use './partials/_variables' as *;
-@use './partials/layout' as *;
-@use './partials/_typography' as *;
-@use './partials/_mixins' as *;
+@use './variables' as *;
+@use './layout' as *;
+@use './_typography' as *;
+@use './_mixins' as *;
 
 // nav styles
 .nav{

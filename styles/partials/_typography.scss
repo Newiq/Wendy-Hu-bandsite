@@ -81,10 +81,15 @@ $font-primary: 'AvenirNext LT Pro';
     font-size: $size;
     line-height: $line-height;
     font-weight: $weight;
-    font-family: $font-primary;
+}
+
+//add default font
+body{
+    font-family: $font-primary, 'Helvetica Neue', Arial, sans-serif;
 }
 
 //mobile text style
+    
     .nav__title, .footer__copyright-subtitle{
         color: $bandSite-Primary-3;
         @include font-face(2rem, 2rem, 400); 
@@ -208,10 +213,12 @@ $font-primary: 'AvenirNext LT Pro';
 
 input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a new comment"]::placeholder{
     @include font-face(1rem, 1.375rem, 300);
+    font-family: $font-primary;
 }
 
 input#username, textarea#comments {
     @include font-face(1rem, 1.375rem, 300);
+    font-family: $font-primary;
 }
 
 
