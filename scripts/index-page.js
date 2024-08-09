@@ -20,6 +20,7 @@ function displayComment(comment) {
         console.error('Comment container not found');
         return;
     }
+    
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
 
@@ -30,7 +31,6 @@ function displayComment(comment) {
     avatarElement.classList.add('comment__avatar');
     if (comment.avatar) {
         avatarElement.style.backgroundImage = `url(${comment.avatar})`;
-        avatarElement.style.backgroundSize = 'cover';
     } else {
         avatarElement.classList.add('placeholder');
     }
