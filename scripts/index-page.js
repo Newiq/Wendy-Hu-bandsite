@@ -1,47 +1,33 @@
-const defaultComments = [
-    {
-        name: 'Victor Pinto',
-        timestamp: '2023-11-02',
-        comment: 'This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.',
-        avatar: ''
-    },
-    {
-        name: 'Christina Cabrera',
-        timestamp: '2023-10-28',
-        comment: 'I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.',
-        avatar: ''
-    },
-    {
-        name: 'Isaac Tadesse',
-        timestamp: '2023-10-20',
-        comment: 'I can\'t stop listening. Every time I hear one of their songs the vocals it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can t get enough.',
-        avatar: ''
+import BandSiteApi from './band-site-api.js';
+
+const api = new BandSiteApi('e0eea5f0-0f8c-4b54-9fc4-ff50843766d4');
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const comments = await api.getComments();
+        console.log('Fetched comments:', comments);
+        comments.forEach(comment => {
+            displayComment(comment);
+        });
+    } catch (error) {
+        console.error('Error fetching comments:', error);
     }
-];
+});
 
-// Function to get local date in YYYY-MM-DD format in Eastern Time Zone
-function getLocalDate() {
-    const now = new Date();
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'America/Toronto' };
-    const localDate = new Intl.DateTimeFormat('en-CA', options).format(now);
-    return localDate.split('/').reverse().join('-'); // Convert to YYYY-MM-DD format
-}
-
-// Function: display the default comment
 function displayComment(comment) {
-    // Create container&comments elements
     const container = document.getElementById("comment__container");
+    if (!container) {
+        console.error('Comment container not found');
+        return;
+    }
     const commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
 
-    // Create info div
     const infoDiv = document.createElement('div');
     infoDiv.classList.add('comment__info');
 
-    // Add avatar element to info div
     const avatarElement = document.createElement('div');
     avatarElement.classList.add('comment__avatar');
-    // Validation: avatar
     if (comment.avatar) {
         avatarElement.style.backgroundImage = `url(${comment.avatar})`;
         avatarElement.style.backgroundSize = 'cover';
@@ -50,63 +36,79 @@ function displayComment(comment) {
     }
     infoDiv.appendChild(avatarElement);
 
-    // Add name element to info div
     const nameElement = document.createElement('span');
     nameElement.classList.add('comment__name');
     nameElement.textContent = comment.name;
     infoDiv.appendChild(nameElement);
 
-    // Add timestamp to info div
     const timeElement = document.createElement('p');
     timeElement.classList.add('comment__time');
-    timeElement.textContent = comment.timestamp;
+    const timestamp = typeof comment.timestamp === 'string' ? comment.timestamp : new Date(comment.timestamp).toISOString();
+    timeElement.textContent = timestamp.split('T')[0];
     infoDiv.appendChild(timeElement);
 
     commentDiv.appendChild(infoDiv);
 
-    // Add comments
     const commentElement = document.createElement('p');
     commentElement.classList.add('comment__text');
     commentElement.textContent = comment.comment;
     commentDiv.appendChild(commentElement);
 
-    // Add div to the container
     container.appendChild(commentDiv);
+    console.log('Displayed comment:', comment);
 }
 
-defaultComments.forEach(comment => {
-    displayComment(comment);
-});
-
-// HTML form
-document.getElementById('commentForm').addEventListener('submit', function (e) {
+document.getElementById('commentForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    // Get user info
+    console.log('Form submission started');
+    
     const usernameInput = document.getElementById("username");
     const commentsInput = document.getElementById("comments");
-    const username = usernameInput.value.trim(); 
+    const username = usernameInput.value.trim();
     const comments = commentsInput.value.trim();
 
-    // Get user info
-    const avatar = document.getElementById("avatar") ? document.getElementById("avatar").src : '';
-    const newUser = {
-        name: username,
-        timestamp: getLocalDate(),
-        comment: comments,
-        avatar: avatar || ''
+    console.log('Username:', username);
+    console.log('Comment:', comments);
+
+    usernameInput.classList.remove('error');
+    commentsInput.classList.remove('error');
+
+    let isValid = true;
+    if (!username) {
+        usernameInput.classList.add('error');
+        isValid = false;
     }
 
-    // Push user info to the array
-    defaultComments.push(newUser);
+    if (!comments) {
+        commentsInput.classList.add('error');
+        isValid = false;
+    }
 
-    // Clear the container before redisplaying
-    document.getElementById("comment__container").innerHTML = '';
+    if (!isValid) {
+        console.log('Form validation failed');
+        return;
+    }
 
-    // Sort the comments by time & display them
-    defaultComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-    defaultComments.forEach(comment => {
-        displayComment(comment);
-    });
-    // Clear form fields
+    const newUser = {
+        name: username,
+        comment: comments
+    }
+
+    console.log('New user object:', newUser);
+
+    try {
+        const postResponse = await api.postComment(newUser);
+        console.log('Post response:', postResponse);
+
+        const updatedComments = await api.getComments();
+        document.getElementById("comment__container").innerHTML = '';
+        updatedComments.forEach(comment => {
+            displayComment(comment);
+        });
+        console.log('Posted new comment:', newUser);
+    } catch (error) {
+        console.error('Error posting comment:', error);
+    }
+
     document.getElementById('commentForm').reset();
 });
