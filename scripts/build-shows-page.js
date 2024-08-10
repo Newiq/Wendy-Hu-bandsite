@@ -80,7 +80,7 @@ function displayShowsCol(show, label) {
     // location
     const venueElement = document.createElement('p');
     venueElement.classList.add('show__venue');
-    venueElement.textContent = show.place; // 使用 place 替代 venue
+    venueElement.textContent = show.place; 
     tagContainer2.appendChild(venueElement);
 
     // 3rd label container
