@@ -362,6 +362,15 @@
             }
         }
     }
+
+    &__btn{
+        margin: 0 2rem 0 0;
+        align-self: flex-end;
+    }
+    &__likenum{
+        margin: 0 2rem 0 0;
+    }
+
 }
 
 #avatar{
@@ -440,10 +449,6 @@ input[placeholder="Enter your name"]::placeholder, textarea[placeholder="Add a n
 
 }
 
-// input:invalid,
-// textarea:invalid {
-//     border-color: #ff0000;
-// }
 
 .label{
     width: 70vw;

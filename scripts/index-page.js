@@ -77,10 +77,8 @@ function displayComment(comment) {
             const updatedLike = await api.likeComment(comment.id);
             likeNum.textContent = `${updatedLike.likes}`;
             console.log('likes have been updated!');
-
         }catch(error){
             console.log('error like comment:',error);
-
         }
         
     });
@@ -89,7 +87,7 @@ function displayComment(comment) {
     const deleteBtn = document.createElement('img');
     deleteBtn.src = '../assets/icons/SVG/icon-delete.svg';
     deleteBtn.alt = 'Delete Button';
-    commentElement.classList.add('comment__btn');
+    deleteBtn.classList.add('comment__btn');
     deleteBtn.style.cursor = 'pointer';
 
     //add event button listener to delete btn

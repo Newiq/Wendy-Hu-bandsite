@@ -67,7 +67,13 @@
             margin-left: 20vw;
             margin-right: 10vw;
         }
-    
+        &__btn{
+            margin: 0 0 0 2rem;
+        }
+        &__likenum{
+            margin-left: 0.5rem;
+        }
+
     }
     #username, #comments{
         margin-top: 0;
@@ -138,6 +144,12 @@
             margin-top: 0.5em;
             margin-left: 9vw;
             margin-right: 5vw;
+        }
+        &__btn{
+            margin: 0 0 0 2rem;
+        }
+        &__likenum{
+            margin-left: 0.5rem;
         }
     }
     #username, #comments{
