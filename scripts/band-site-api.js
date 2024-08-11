@@ -38,6 +38,16 @@ class BandSiteApi {
             throw error;
         }
     }
+    //like comments
+    async likeComment(commentId) {
+        try {
+            const response = await axios.put(`${this.baseUrl}comments/${commentId}/like?api_key=${this.apiKey}`);
+            return response.data;
+        } catch (error) {
+            console.error(`Error liking comment ID ${commentId}:`, error);
+            throw error;
+        }
+    }
 }
 
 export default BandSiteApi;

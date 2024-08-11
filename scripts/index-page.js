@@ -54,8 +54,54 @@ function displayComment(comment) {
     commentElement.textContent = comment.comment;
     commentDiv.appendChild(commentElement);
 
+    
+
+    //add like btn
+    const likeBtn = document.createElement('img');
+    likeBtn.src = '../assets/icons/SVG/icon-like.svg';
+    likeBtn.alt = 'Like Button';
+    likeBtn.classList.add('comment__btn');
+    likeBtn.style.cursor = 'pointer';
+    commentElement.appendChild(likeBtn);
+
+
+    //add like number
+    const likeNum = document.createElement('span');
+    likeNum.classList.add('comment__likenum');
+    likeNum.textContent = `${comment.likes}`;
+    commentElement.appendChild(likeNum);
+
+    //add event button listener
+    likeBtn.addEventListener('click', async function() {
+        try{
+            console.log('Like button clicked!');
+            const updatedLike = await api.likeComment(comment.id);
+            likeNum.textContent = `${updatedLike.likes}`;
+            console.log('likes have been updated!');
+
+        }catch(error){
+            console.log('error like comment:',error);
+
+        }
+        
+    });
+
+    
     container.appendChild(commentDiv);
-    console.log('Displayed comment:', comment);
+
+
+    //add delete btn
+    const deleteBtn = document.createElement('img');
+    deleteBtn.src = '../assets/icons/SVG/icon-delete.svg';
+    deleteBtn.alt = 'Delete Button';
+    commentElement.classList.add('comment__btn');
+    deleteBtn.style.cursor = 'pointer';
+    deleteBtn.addEventListener('click', function() {
+        console.log('Delete button clicked!');
+    });
+    commentElement.appendChild(deleteBtn);
+    
+
 }
 
 document.getElementById('commentForm').addEventListener('submit', async function (e) {

@@ -106,18 +106,24 @@
         margin-bottom: 20px;
         padding: 16px;
         border-bottom: .1rem solid $bandSite-Secondary-2;
-        @include mobile{
-            &:hover{
-                background-color: $bandSite-Secondary-3;
-            }
-        
-            &:active{
-                background-color: $bandSite-Secondary-2;
-            }
+        &:hover{
+            background-color: $bandSite-Secondary-3;
+        }
+    
+        &:active{
+            background-color: $bandSite-Secondary-2;
         }
         @include tablet{
             border:none;
+            &:hover{
+                background-color: rgba($color: $bandSite-Secondary-2, $alpha: 0);
+            }
+        
+            &:active{
+                background-color: rgba($color: $bandSite-Secondary-2, $alpha: 0);
+            }
             &-label{
+                
                 padding-left: 1.5rem;
                 width: 56%;
                 display: flex;
@@ -143,6 +149,13 @@
 
         @include desktop{
             border:none;
+            &:hover{
+                background-color: rgba($color: $bandSite-Secondary-2, $alpha: 0);
+            }
+        
+            &:active{
+                background-color: rgba($color: $bandSite-Secondary-2, $alpha: 0);
+            }
             &-label{
                 width: 60%;
                 display: flex;
