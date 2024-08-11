@@ -48,6 +48,19 @@ class BandSiteApi {
             throw error;
         }
     }
+
+    //delete comments
+    async deleteComment(commentId){
+        try {
+            console.log(`Sending DELETE request to: ${this.baseUrl}comments/${commentId}?api_key=${this.apiKey}`);
+            const response = await axios.delete(`${this.baseUrl}comments/${commentId}?api_key=${this.apiKey}`);
+            return response.data;
+            
+        } catch (error) {
+            console.error(`Error delete comment ID ${commentId}:`, error);
+            throw error;
+        }
+    }
 }
 
 export default BandSiteApi;

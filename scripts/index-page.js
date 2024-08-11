@@ -53,7 +53,6 @@ function displayComment(comment) {
     commentElement.classList.add('comment__text');
     commentElement.textContent = comment.comment;
     commentDiv.appendChild(commentElement);
-
     
 
     //add like btn
@@ -71,7 +70,7 @@ function displayComment(comment) {
     likeNum.textContent = `${comment.likes}`;
     commentElement.appendChild(likeNum);
 
-    //add event button listener
+    //add event button listener to like btn
     likeBtn.addEventListener('click', async function() {
         try{
             console.log('Like button clicked!');
@@ -86,20 +85,27 @@ function displayComment(comment) {
         
     });
 
-    
-    container.appendChild(commentDiv);
-
-
     //add delete btn
     const deleteBtn = document.createElement('img');
     deleteBtn.src = '../assets/icons/SVG/icon-delete.svg';
     deleteBtn.alt = 'Delete Button';
     commentElement.classList.add('comment__btn');
     deleteBtn.style.cursor = 'pointer';
-    deleteBtn.addEventListener('click', function() {
-        console.log('Delete button clicked!');
-    });
+
+    //add event button listener to delete btn
+    deleteBtn.addEventListener('click', async function () {
+        try {
+            const deleteComment = await api.deleteComment(comment.id);
+            console.log('Delete comments:', deleteComment);
+            commentDiv.remove();
+        } catch (error) {
+            console.log('error delete comment:',error);
+        }
+        
+    })
     commentElement.appendChild(deleteBtn);
+
+    container.appendChild(commentDiv);
     
 
 }
